@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FTP File Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    .upload-container {
+      margin: 50px auto;
+      max-width: 400px;
+    }
+    input[type="file"] {
+      display: block;
+      margin: 10px auto;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h1>Upload File to FTP Server</h1>
+    <input type="file" id="fileInput" />
+    <button onclick="uploadFile()">Upload</button>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    async function uploadFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert('Please select a file to upload.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch('http://localhost:3000/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          document.getElementById('status').innerText = 'File uploaded successfully!';
+        } else {
+          document.getElementById('status').innerText = 'Upload failed!';
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('status').innerText = 'An error occurred while uploading.';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{"host": "localhost",
+ "username": "username",
+ "password": "password",
+ "port": "21",
+ "secure": "false",
+ "passive": "false",
+}

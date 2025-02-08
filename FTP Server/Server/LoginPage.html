@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>FTP Login</title>
+</head>
+<body>
+  <div class="login-container">
+    <h1>FTP Server Login</h1>
+    <form id="ftp-login-form">
+      <label for="ftp-host">FTP Host:</label>
+      <input type="text" id="ftp-host" name="ftpHost" placeholder="ftp.example.com" required>
+
+      <label for="ftp-username">Username:</label>
+      <input type="text" id="ftp-username" name="username" required>
+
+      <label for="ftp-password">Password:</label>
+      <input type="password" id="ftp-password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+    <div id="response-message"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
